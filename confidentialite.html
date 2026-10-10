@@ -3,51 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Confidentialité – Collection Sheet pour WikiMasters</title>
+<title>Confidentialité · WikiSheet</title>
+<link rel="icon" href="icone.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,600&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap">
 <style>
-/* Mise en page : une colonne de lecture, sections séparées par de fins filets, accent repris de l'icône de l'extension */
 :root {
-  --fond: #f7f8fa;
-  --papier: #ffffff;
-  --encre: #1d2330;
-  --gris: #586174;
-  --filet: #d6dbe4;
-  --accent: #3366cc;
-  --titre: "Literata", Georgia, "Times New Roman", serif;
-  --texte: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --fond: #0c0e0d; --carte: #161a18; --carte2: #222725; --filet: #262e2a;
+  --encre: #e9efe9; --gris: #8f9a93; --menthe: #3ddc97; --menthe-encre: #062a19; --menthe-pastille: #1b2a23;
+  color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --fond: #11151c; --papier: #171c25; --encre: #e6e9ef; --gris: #a3abbb; --filet: #2c3443; --accent: #7aa2f0; color-scheme: dark; }
-}
-:root[data-theme="dark"] { --fond: #11151c; --papier: #171c25; --encre: #e6e9ef; --gris: #a3abbb; --filet: #2c3443; --accent: #7aa2f0; color-scheme: dark; }
-body { background: var(--fond); color: var(--encre); font: 17px/1.6 var(--texte); padding-inline: 16px; padding-block: 40px 56px; }
-main { max-width: 42rem; margin: 0 auto; background: var(--papier); border: 1px solid var(--filet); border-radius: 6px; padding: 28px clamp(18px, 5vw, 44px); }
-h1 { font: 600 clamp(1.6rem, 4vw, 2.1rem)/1.2 var(--titre); margin: 0 0 6px; text-wrap: balance; }
-.maj { color: var(--gris); font-size: 0.95rem; margin: 0 0 22px; }
-h2 { font: 500 1.2rem/1.3 var(--titre); margin: 0 0 8px; text-wrap: balance; }
-section { border-top: 1px solid var(--filet); padding-top: 18px; margin-top: 18px; }
-p, ul { margin: 0 0 10px; }
-ul { padding-left: 1.2rem; display: grid; gap: 6px; }
-a { color: var(--accent); }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-code { font-size: 0.92em; background: var(--fond); border: 1px solid var(--filet); border-radius: 3px; padding: 0 4px; }
-.pied { color: var(--gris); font-size: 0.9rem; text-align: center; margin-top: 18px; }
+* { box-sizing: border-box; }
+html { background: var(--fond); }
+body { margin: 0; min-height: 100vh; background: radial-gradient(900px 600px at 85% -10%, rgba(61,220,151,.14), rgba(61,220,151,0) 70%) no-repeat, var(--fond); color: var(--encre); font: 16px/1.6 "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif; padding: 40px 16px 56px; }
+main { max-width: 44rem; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.entete { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.entete img { width: 52px; height: 52px; }
+.marque { font-weight: 800; font-size: 30px; letter-spacing: -0.02em; line-height: 1; }
+.marque span, .menthe { color: var(--menthe); }
+.sous { color: var(--gris); font-size: 14px; margin-top: 4px; }
+h1 { font-weight: 800; font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.15; letter-spacing: -0.02em; margin: 8px 0 4px; text-wrap: balance; }
+.intro { color: var(--gris); font-size: 1.05rem; margin: 0 0 8px; }
+.pastilles { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+.pastille { border-radius: 999px; padding: 4px 12px; background: var(--menthe-pastille); color: var(--menthe); font-weight: 600; font-size: 13px; }
+section { background: var(--carte); border: 1px solid var(--filet); border-radius: 14px; padding: 18px clamp(16px, 4vw, 24px); }
+h2 { font-size: 1.1rem; font-weight: 600; margin: 0 0 10px; }
+p { margin: 0 0 10px; } p:last-child { margin-bottom: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+ul li { position: relative; padding-left: 22px; }
+ul li::before { content: "+"; position: absolute; left: 2px; color: var(--menthe); font-weight: 800; }
+ol { counter-reset: n; }
+ol li { counter-increment: n; position: relative; padding-left: 36px; min-height: 26px; }
+ol li::before { content: counter(n); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--menthe); color: var(--menthe-encre); font-weight: 800; font-size: 13px; display: grid; place-items: center; }
+a { color: var(--menthe); font-weight: 600; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--menthe); outline-offset: 2px; border-radius: 4px; }
+code { font-size: .9em; background: var(--carte2); border: 1px solid var(--filet); border-radius: 5px; padding: 0 5px; }
+.date { color: var(--gris); font-size: 14px; margin: 0 0 6px; }
+.pied { color: var(--gris); font-size: 13px; text-align: center; margin-top: 10px; }
 </style>
 </head>
 <body>
 <main>
-  <p class="maj"><a href="./">← Collection Sheet pour WikiMasters</a></p>
-  <h1>Politique de confidentialité – Collection Sheet pour WikiMasters</h1>
-  <p class="maj">Dernière mise à jour : 7 octobre 2026</p>
-  <p>Collection Sheet pour WikiMasters est une extension Chrome non officielle. Elle synchronise votre collection du jeu WikiMasters avec un Google Sheet qui vous appartient.</p>
+  <a class="entete" href="./" style="text-decoration:none;color:inherit">
+    <img src="icone.png" alt="">
+    <div><div class="marque"><span>Wiki</span>Sheet</div><div class="sous">Collection Sheet pour WikiMasters</div></div>
+  </a>
+  <h1>Politique de confidentialité</h1>
+  <p class="date">Dernière mise à jour : 10 octobre 2026</p>
+  <p class="intro">Collection Sheet pour WikiMasters (WikiSheet) est une extension de navigateur non officielle. Elle synchronise votre collection du jeu WikiMasters avec un Google Sheet qui vous appartient.</p>
 
   <section>
     <h2>Données utilisées</h2>
     <ul>
       <li>Votre collection WikiMasters (titres des cartes, rareté, tags, dates d'obtention) et les prix des ventes du marché, lus sur wiki-masters.com avec votre propre session.</li>
-      <li>Un jeton de connexion Google, fourni et géré par Google Chrome, qui permet à l'extension d'écrire dans votre Google Sheet.</li>
+      <li>Un jeton de connexion Google, qui permet à l'extension d'écrire dans votre Google Sheet. Dans Google Chrome, il est fourni et géré par le navigateur. Dans les autres navigateurs (Edge, Opera, Brave, Firefox), il est obtenu via la page de connexion Google et conservé uniquement pendant la session du navigateur.</li>
       <li>Vos réglages et vos suivis, enregistrés uniquement dans votre navigateur.</li>
     </ul>
   </section>
@@ -74,10 +85,9 @@ code { font-size: 0.92em; background: var(--fond); border: 1px solid var(--filet
 
   <section>
     <h2>Contact</h2>
-    <p>Pour toute question, utilisez l'adresse de contact du développeur indiquée sur la fiche de l'extension dans le Chrome Web Store.</p>
+    <p>Pour toute question, utilisez l'adresse de contact du développeur indiquée sur la fiche de l'extension (Chrome Web Store ou Firefox Add-ons).</p>
   </section>
 </main>
-<p class="pied">Extension sans lien avec WikiMasters ni avec Wikipédia.</p>
-
+<p class="pied">Extension non officielle, sans lien avec WikiMasters ni avec Wikipédia.</p>
 </body>
 </html>
